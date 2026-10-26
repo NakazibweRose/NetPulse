@@ -24,16 +24,24 @@ load_dotenv(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4(3v77^b8_5-7upo@d*z5edgk#sp)c0*-x&c9eih^4i-0$!u0)'
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    "django-insecure-4(3v77^b8_5-7upo@d*z5edgk#sp)c0*-x&c9eih^4i-0$!u0)!"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "uprising-snowbird-parish.ngrok-free.dev",
 ]
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition

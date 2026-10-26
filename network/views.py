@@ -18,28 +18,28 @@ class TowerViewSet(viewsets.ModelViewSet):
     queryset = Tower.objects.all()
     serializer_class = TowerSerializer
 
-@action(detail=True, methods=["post"])
-def simulate_incident(self, request, pk=None):
-    tower = self.get_object()
+    @action(detail=True, methods=["post"])
+    def simulate_incident(self, request, pk=None):
+        tower = self.get_object()
 
-    severity = request.data.get("severity", "CRITICAL")
+        severity = request.data.get("severity", "CRITICAL")
 
-    metric, incident = simulate_incident(
-        tower,
-        severity
-    )
+        metric, incident = simulate_incident(
+            tower,
+            severity
+        )
 
-    return Response({
-        "message": "Network incident simulated successfully",
-        "tower": tower.tower_code,
-        "metric_id": metric.id,
-        "incident_id": incident.id,
-        "severity": incident.severity,
-        "reason": incident.reason,
-    })
+        return Response({
+            "message": "Network incident simulated successfully",
+            "tower": tower.tower_code,
+            "metric_id": metric.id,
+            "incident_id": incident.id,
+            "severity": incident.severity,
+            "reason": incident.reason,
+        })
 
-@action(detail=True, methods=["post"])
-def restore_network(self, request, pk=None):
+    @action(detail=True, methods=["post"])
+    def restore_network(self, request, pk=None):
         tower = self.get_object()
         metric = restore_network(tower)
 
@@ -50,8 +50,8 @@ def restore_network(self, request, pk=None):
             "status": tower.status,
         })
 
-@action(detail=True, methods=["post"])
-def generate_data(self, request, pk=None):
+    @action(detail=True, methods=["post"])
+    def generate_data(self, request, pk=None):
         tower = self.get_object()
 
         metrics = []

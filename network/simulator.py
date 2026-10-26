@@ -55,7 +55,7 @@ def simulate_incident(tower, severity="CRITICAL"):
 
         tower.save()
 
-        return metric, incident
+    return metric, incident
 
 def restore_network(tower):
     latency = random.uniform(30, 80)

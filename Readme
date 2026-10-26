@@ -1,0 +1,5 @@
+to run this project you run ;
+Your django server in one terminal
+Your React server in the other terminal as well
+You also run ngrok in the 3rd terminal 
+note all three terminals must keep running .

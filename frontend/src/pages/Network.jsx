@@ -29,15 +29,30 @@ function Network() {
         const towerFromUrl = searchParams.get("tower");
 
         if (towerFromUrl) {
-          const tower = data.find(
-            (item) => item.id === Number(towerFromUrl)
-          );
+  const tower = data.find(
+    (item) => item.id === Number(towerFromUrl)
+  );
 
-          if (tower) {
-            setSelectedTower(tower);
-            return;
-          }
-        }
+  if (tower) {
+    setSelectedTower(tower);
+    return;
+  }
+}
+
+if (selectedTower) {
+  const updatedTower = data.find(
+    (item) => item.id === selectedTower.id
+  );
+
+  if (updatedTower) {
+    setSelectedTower(updatedTower);
+    return;
+  }
+}
+
+if (data.length > 0) {
+  setSelectedTower(data[0]);
+}
 
         if (data.length > 0 && !selectedTower) {
           setSelectedTower(data[0]);

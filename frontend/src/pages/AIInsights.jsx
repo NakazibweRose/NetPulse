@@ -5,6 +5,8 @@ import {
   Users,
 } from "lucide-react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function getRecommendation(incident, reportCount) {
   const reason = incident.reason.toLowerCase();
   const actions = [];
@@ -57,13 +59,13 @@ function AIInsights() {
 
   useEffect(() => {
     Promise.all([
-      fetch("http://127.0.0.1:8000/api/incidents/").then((res) =>
+      fetch("${API_URL}/api/incidents/").then((res) =>
         res.json()
       ),
-      fetch("http://127.0.0.1:8000/api/reports/").then((res) =>
+      fetch("${API_URL}/api/reports/").then((res) =>
         res.json()
       ),
-      fetch("http://127.0.0.1:8000/api/towers/").then((res) =>
+      fetch("${API_URL}/api/towers/").then((res) =>
         res.json()
       ),
     ])
@@ -389,4 +391,5 @@ function getAIInterpretation(incident, reportCount) {
 
   return observations;
 }
+
 

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Customers() {
   const [reports, setReports] = useState([]);
 
   const loadReports = () => {
-    fetch("http://127.0.0.1:8000/api/reports/")
+    fetch("${API_URL}/api/reports/")
       .then((response) => response.json())
       .then((data) => {
         setReports(data);
@@ -27,7 +29,7 @@ function Customers() {
       return;
     }
 
-    fetch(`http://127.0.0.1:8000/api/reports/${reportId}/`, {
+    fetch(`${API_URL}/api/reports/${reportId}/`, {
       method: "DELETE",
     })
       .then((response) => {

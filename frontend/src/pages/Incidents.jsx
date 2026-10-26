@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Incidents() {
   const [incidents, setIncidents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const loadIncidents = () => {
-    fetch("http://127.0.0.1:8000/api/incidents/")
+    fetch("${API_URL}/api/incidents/")
       .then((response) => response.json())
       .then((data) => {
         setIncidents(data);
@@ -30,7 +32,7 @@ function Incidents() {
       return;
     }
 
-    fetch(`http://127.0.0.1:8000/api/incidents/${incidentId}/`, {
+    fetch(`${API_URL}/api/incidents/${incidentId}/`, {
       method: "DELETE",
     })
       .then((response) => {

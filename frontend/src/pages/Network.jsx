@@ -11,6 +11,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Network() {
   const [searchParams] = useSearchParams();
 
@@ -21,7 +23,7 @@ function Network() {
   const [incident, setIncident] = useState(null);
 
   const loadTowers = () => {
-    fetch("http://127.0.0.1:8000/api/towers/")
+    fetch("${API_URL}/api/towers/")
       .then((response) => response.json())
       .then((data) => {
         setTowers(data);
@@ -64,7 +66,7 @@ if (data.length > 0) {
   };
 
   const loadLatestMetric = (towerId) => {
-    fetch("http://127.0.0.1:8000/api/metrics/")
+    fetch("${API_URL}/api/metrics/")
       .then((response) => response.json())
       .then((data) => {
         const towerMetrics = data.filter(
@@ -100,7 +102,7 @@ if (data.length > 0) {
     }
 
     fetch(
-      `http://127.0.0.1:8000/api/towers/${selectedTower.id}/generate_data/`,
+      `${API_URL}/api/towers/${selectedTower.id}/generate_data/`,
       {
         method: "POST",
       }
@@ -121,7 +123,7 @@ if (data.length > 0) {
     }
 
     fetch(
-      `http://127.0.0.1:8000/api/towers/${selectedTower.id}/simulate_incident/`,
+      `${API_URL}/api/towers/${selectedTower.id}/simulate_incident/`,
       {
         method: "POST",
       }
@@ -143,7 +145,7 @@ if (data.length > 0) {
     }
 
     fetch(
-      `http://127.0.0.1:8000/api/towers/${selectedTower.id}/restore_network/`,
+      `${API_URL}/api/towers/${selectedTower.id}/restore_network/`,
       {
         method: "POST",
       }

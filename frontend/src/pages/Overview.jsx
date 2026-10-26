@@ -20,6 +20,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Overview() {
   const navigate = useNavigate();
 
@@ -37,16 +39,16 @@ function Overview() {
 
   const loadDashboardData = () => {
     Promise.all([
-      fetch("http://127.0.0.1:8000/api/towers/").then((res) =>
+      fetch("${API_URL}/api/towers/").then((res) =>
         res.json()
       ),
-      fetch("http://127.0.0.1:8000/api/incidents/").then((res) =>
+      fetch("${API_URL}/api/incidents/").then((res) =>
         res.json()
       ),
-      fetch("http://127.0.0.1:8000/api/reports/").then((res) =>
+      fetch("${API_URL}/api/reports/").then((res) =>
         res.json()
       ),
-      fetch("http://127.0.0.1:8000/api/metrics/").then((res) =>
+      fetch("${API_URL}/api/metrics/").then((res) =>
         res.json()
       ),
     ])
@@ -197,7 +199,7 @@ function Overview() {
 
     try {
       await fetch(
-        `http://127.0.0.1:8000/api/towers/${tower.id}/simulate_incident/`,
+        `${API_URL}/api/towers/${tower.id}/simulate_incident/`,
         {
           method: "POST",
         }
@@ -220,7 +222,7 @@ function Overview() {
 
     try {
       await fetch(
-        `http://127.0.0.1:8000/api/towers/${tower.id}/generate_data/`,
+        `${API_URL}/api/towers/${tower.id}/generate_data/`,
         {
           method: "POST",
         }
@@ -245,7 +247,7 @@ function Overview() {
 
     try {
       await fetch(
-        `http://127.0.0.1:8000/api/towers/${tower.id}/restore_network/`,
+        `${API_URL}/api/towers/${tower.id}/restore_network/`,
         {
           method: "POST",
         }

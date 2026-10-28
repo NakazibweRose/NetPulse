@@ -59,13 +59,13 @@ function AIInsights() {
 
   useEffect(() => {
     Promise.all([
-      fetch("${API_URL}/api/incidents/").then((res) =>
+      fetch(`${API_URL}/api/incidents`).then((res) =>
         res.json()
       ),
-      fetch("${API_URL}/api/reports/").then((res) =>
+      fetch(`${API_URL}/api/reports`).then((res) =>
         res.json()
       ),
-      fetch("${API_URL}/api/towers/").then((res) =>
+      fetch(`${API_URL}/api/towers`).then((res) =>
         res.json()
       ),
     ])
@@ -391,5 +391,8 @@ function getAIInterpretation(incident, reportCount) {
 
   return observations;
 }
+
+
+
 
 

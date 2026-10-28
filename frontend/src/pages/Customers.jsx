@@ -6,7 +6,7 @@ function Customers() {
   const [reports, setReports] = useState([]);
 
   const loadReports = () => {
-    fetch("${API_URL}/api/reports/")
+    fetch(`${API_URL}/api/reports`)
       .then((response) => response.json())
       .then((data) => {
         setReports(data);
@@ -257,3 +257,6 @@ function Customers() {
 }
 
 export default Customers;
+
+
+

@@ -7,7 +7,7 @@ function Incidents() {
   const [loading, setLoading] = useState(true);
 
   const loadIncidents = () => {
-    fetch("${API_URL}/api/incidents/")
+    fetch(`${API_URL}/api/incidents`)
       .then((response) => response.json())
       .then((data) => {
         setIncidents(data);
@@ -245,3 +245,6 @@ function Incidents() {
 }
 
 export default Incidents;
+
+
+

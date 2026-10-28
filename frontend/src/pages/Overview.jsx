@@ -39,16 +39,16 @@ function Overview() {
 
   const loadDashboardData = () => {
     Promise.all([
-      fetch("${API_URL}/api/towers/").then((res) =>
+      fetch(`${API_URL}/api/towers`).then((res) =>
         res.json()
       ),
-      fetch("${API_URL}/api/incidents/").then((res) =>
+      fetch(`${API_URL}/api/incidents`).then((res) =>
         res.json()
       ),
-      fetch("${API_URL}/api/reports/").then((res) =>
+      fetch(`${API_URL}/api/reports`).then((res) =>
         res.json()
       ),
-      fetch("${API_URL}/api/metrics/").then((res) =>
+      fetch(`${API_URL}/api/metrics`).then((res) =>
         res.json()
       ),
     ])
@@ -933,3 +933,6 @@ function Overview() {
 }
 
 export default Overview;
+
+
+

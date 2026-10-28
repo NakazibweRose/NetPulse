@@ -23,7 +23,7 @@ function Network() {
   const [incident, setIncident] = useState(null);
 
   const loadTowers = () => {
-    fetch("${API_URL}/api/towers/")
+    fetch(`${API_URL}/api/towers/`)
       .then((response) => response.json())
       .then((data) => {
         setTowers(data);
@@ -66,7 +66,7 @@ if (data.length > 0) {
   };
 
   const loadLatestMetric = (towerId) => {
-    fetch("${API_URL}/api/metrics/")
+   fetch(`${API_URL}/api/metrics/`)
       .then((response) => response.json())
       .then((data) => {
         const towerMetrics = data.filter(
@@ -458,3 +458,6 @@ if (data.length > 0) {
 }
 
 export default Network;
+
+
+

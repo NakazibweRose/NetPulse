@@ -153,4 +153,5 @@ REST_FRAMEWORK = {
 }
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://netpulse-frontend-3nnd.onrender.com",
 ]
